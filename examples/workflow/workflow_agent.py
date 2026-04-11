@@ -34,9 +34,9 @@ class ProcessMainEntity(BaseModel):
 step_design_box = Step(
     name="Design Box Step",
     requires_user_input=True,
-    user_input_message="Box Size Info",
+    user_input_message="Configure report settings:",
     user_input_schema=[
-        UserInputField(name="length", field_type="str", description="Length of box", required=True) #type: ignore
+        UserInputField(name="length", field_type="str", description="box length", required=True),
     ],
     executor=step_design_box_for_box_size
 )
