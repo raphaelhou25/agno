@@ -854,6 +854,7 @@ jobs:
           ./libs/agno/tests/integration/teams/test_tasks_mode_streaming.py \
           ./libs/agno/tests/integration/teams/test_followups.py \
           ./libs/agno/tests/integration/teams/test_tool_hooks.py \
+          ./libs/agno/tests/integration/teams/test_member_dedup.py \
 
   verify-split-test-coverage:
     runs-on: ubuntu-latest
@@ -966,6 +967,7 @@ jobs:
         run: |
           source .venv/bin/activate
           python -m pytest ./libs/agno/tests/integration/knowledge/test_csv_knowledge.py \
+          ./libs/agno/tests/integration/knowledge/test_docling_knowledge.py \
           ./libs/agno/tests/integration/knowledge/test_docx_knowledge.py \
           ./libs/agno/tests/integration/knowledge/test_json_knowledge.py \
           ./libs/agno/tests/integration/knowledge/test_md_knowledge.py \
