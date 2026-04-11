@@ -5,15 +5,15 @@ from agno.os import AgentOS
 from agno.workflow import Workflow, StepOutput, StepInput, Step, pause
 from agno.workflow.types import UserInputField
 
-#
-# @pause(
-#     name="pause_step_design_box",
-#     requires_user_input=True,
-#     user_input_message="Box Size Info",
-#     user_input_schema=[
-#         UserInputField(name="length", field_type="str", description="Length of box", required=True)
-#     ]
-# )
+
+@pause(
+    name="pause_step_design_box",
+    requires_user_input=True,
+    user_input_message="Box Size Info",
+    user_input_schema=[
+        UserInputField(name="length", field_type="str", description="Length of box", required=True)
+    ]
+)
 def step_design_box_for_box_size(step_input: StepInput)->StepOutput:
     print("Design Box...")
     return StepOutput(
@@ -25,30 +25,36 @@ def step_design_box_for_box_size(step_input: StepInput)->StepOutput:
 class ProcessMainEntity(BaseModel):
     name: str
 
-# step_design_box = Step(
-#     name="Design Box Step",
-#     executor=step_design_box
-# )
-
-
 step_design_box = Step(
     name="Design Box Step",
-    requires_user_input=True,
-    user_input_message="Configure report settings:",
-    user_input_schema=[
-        UserInputField(name="length", field_type="str", description="box length", required=True),
-    ],
-    executor=step_design_box_for_box_size
+    executor=step_design_box_for_box_size,
 )
+
+human_review = HumanReview(
+    requires_output_review=True,
+    output_review_message="Review the email draft before sending",
+    on_reject=OnReject.cancel,  # Reject = cancel workflow (don't send the email)
+),
+
+
+# step_design_box = Step(
+#     name="Design Box Step",
+#     requires_user_input=True,
+#     user_input_message="Configure report settings:",
+#     user_input_schema=[
+#         UserInputField(name="length", field_type="str", description="box length", required=True),
+#     ],
+#     executor=step_design_box_for_box_size
+# )
 
 workflow_packaging_design = Workflow(
     id="packaging_design_workflow",
     name="packaging_design_workflow",
     description="Packaging design workflow.",
-    # db=SqliteDb(
-    #     session_table="workflow_session",
-    #     db_file="tmp/workflow.db",
-    # ),
+    db=SqliteDb(
+        session_table="workflow_session",
+        db_file="tmp/workflow.db",
+    ),
     steps=[step_design_box],
     input_schema=ProcessMainEntity
 )
