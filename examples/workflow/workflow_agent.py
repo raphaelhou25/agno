@@ -5,16 +5,16 @@ from agno.os import AgentOS
 from agno.workflow import Workflow, StepOutput, StepInput, Step, pause
 from agno.workflow.types import UserInputField
 
-
-@pause(
-    name="pause_step_design_box",
-    requires_user_input=True,
-    user_input_message="Box Size Info",
-    user_input_schema=[
-        UserInputField(name="length", field_type="str", description="Length of box", required=True)
-    ]
-)
-def step_design_box(step_input: StepInput)->StepOutput:
+#
+# @pause(
+#     name="pause_step_design_box",
+#     requires_user_input=True,
+#     user_input_message="Box Size Info",
+#     user_input_schema=[
+#         UserInputField(name="length", field_type="str", description="Length of box", required=True)
+#     ]
+# )
+def step_design_box_for_box_size(step_input: StepInput)->StepOutput:
     print("Design Box...")
     return StepOutput(
         content="Box design complete:\n"
@@ -25,9 +25,20 @@ def step_design_box(step_input: StepInput)->StepOutput:
 class ProcessMainEntity(BaseModel):
     name: str
 
+# step_design_box = Step(
+#     name="Design Box Step",
+#     executor=step_design_box
+# )
+
+
 step_design_box = Step(
     name="Design Box Step",
-    executor=step_design_box
+    requires_user_input=True,
+    user_input_message="Box Size Info",
+    user_input_schema=[
+        UserInputField(name="length", field_type="str", description="Length of box", required=True) #type: ignore
+    ],
+    executor=step_design_box_for_box_size
 )
 
 workflow_packaging_design = Workflow(
