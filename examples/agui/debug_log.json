@@ -1,0 +1,42 @@
+{
+  "method": "agent/run",
+  "params": {
+    "agentId": "human_in_the_loop"
+  },
+  "body": {
+    "threadId": "tid_123",
+    "runId": "220672fa-0a67-42f2-97fb-e63145d1fe7b",
+    "tools": [],
+    "context": [],
+    "forwardedProps": {},
+    "state": {},
+    "messages": [
+      {
+        "id": "msg_user_01",
+        "role": "user",
+        "content": "{\"task\":\"调用箱体设计工具，帮我设计外包装\",\"task_detail\":\"产品信息：莱卡摄像头，数量：1个，运输：易碎品\"}"
+      },
+      {
+        "id": "0685ab82-a868-4480-b79d-09eafd0fac6f",
+        "role": "assistant",
+        "content": "我来帮您设计莱卡摄像头的外包装。首先让我了解一下包装设计的相关技能，然后使用箱体设计工具。现在让我使用箱体设计工具来为莱卡摄像头设计外包装：",
+        "toolCalls": [
+          {
+            "id": "call_00_e5WjUHgWgYnaqZS88FerbW1h",
+            "type": "function",
+            "function": {
+              "name": "generate_task_steps",
+              "arguments": "[{\"name\": \"length\", \"field_type\": \"str\", \"description\": \"\\u5305\\u88c5\\u7bb1\\u957f\\u5ea6\", \"value\": null}]"
+            }
+          }
+        ]
+      },
+      {
+        "id": "f7b33787-44a6-40bc-91eb-25e2cbbef39c",
+        "role": "tool",
+        "toolCallId": "call_00_e5WjUHgWgYnaqZS88FerbW1h",
+        "content": "[{\"name\": \"length\", \"field_type\": \"str\", \"description\": \"\\u5305\\u88c5\\u7bb1\\u957f\\u5ea6\", \"value\": \"1001\"}]"
+      }
+    ]
+  }
+}

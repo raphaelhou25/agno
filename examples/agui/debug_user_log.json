@@ -1,0 +1,114 @@
+data: {"type":"RUN_STARTED","threadId":"tid_123","runId":"220672fa-0a67-42f2-97fb-e63145d1fe7b"}
+
+data: {"type":"TEXT_MESSAGE_START","messageId":"636d5e8d-97c9-4416-9f96-8c5294f5abd5","role":"assistant"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"636d5e8d-97c9-4416-9f96-8c5294f5abd5","delta":"我来"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"636d5e8d-97c9-4416-9f96-8c5294f5abd5","delta":"帮"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"636d5e8d-97c9-4416-9f96-8c5294f5abd5","delta":"您"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"636d5e8d-97c9-4416-9f96-8c5294f5abd5","delta":"设计"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"636d5e8d-97c9-4416-9f96-8c5294f5abd5","delta":"莱"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"636d5e8d-97c9-4416-9f96-8c5294f5abd5","delta":"卡"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"636d5e8d-97c9-4416-9f96-8c5294f5abd5","delta":"摄像头"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"636d5e8d-97c9-4416-9f96-8c5294f5abd5","delta":"的外"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"636d5e8d-97c9-4416-9f96-8c5294f5abd5","delta":"包装"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"636d5e8d-97c9-4416-9f96-8c5294f5abd5","delta":"。"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"636d5e8d-97c9-4416-9f96-8c5294f5abd5","delta":"首先"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"636d5e8d-97c9-4416-9f96-8c5294f5abd5","delta":"让我"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"636d5e8d-97c9-4416-9f96-8c5294f5abd5","delta":"了解一下"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"636d5e8d-97c9-4416-9f96-8c5294f5abd5","delta":"包装"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"636d5e8d-97c9-4416-9f96-8c5294f5abd5","delta":"设计"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"636d5e8d-97c9-4416-9f96-8c5294f5abd5","delta":"的相关"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"636d5e8d-97c9-4416-9f96-8c5294f5abd5","delta":"技能"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"636d5e8d-97c9-4416-9f96-8c5294f5abd5","delta":"，"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"636d5e8d-97c9-4416-9f96-8c5294f5abd5","delta":"然后"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"636d5e8d-97c9-4416-9f96-8c5294f5abd5","delta":"使用"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"636d5e8d-97c9-4416-9f96-8c5294f5abd5","delta":"箱"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"636d5e8d-97c9-4416-9f96-8c5294f5abd5","delta":"体"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"636d5e8d-97c9-4416-9f96-8c5294f5abd5","delta":"设计"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"636d5e8d-97c9-4416-9f96-8c5294f5abd5","delta":"工具"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"636d5e8d-97c9-4416-9f96-8c5294f5abd5","delta":"。"}
+
+data: {"type":"TEXT_MESSAGE_END","messageId":"636d5e8d-97c9-4416-9f96-8c5294f5abd5"}
+
+data: {"type":"TOOL_CALL_START","toolCallId":"call_00_z3emPmeYuNrhZDkaznOccFai","toolCallName":"get_skill_instructions","parentMessageId":"636d5e8d-97c9-4416-9f96-8c5294f5abd5"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"call_00_z3emPmeYuNrhZDkaznOccFai","delta":"{\"skill_name\": \"packaging-design\"}"}
+
+data: {"type":"TOOL_CALL_END","toolCallId":"call_00_z3emPmeYuNrhZDkaznOccFai"}
+
+data: {"type":"TOOL_CALL_RESULT","messageId":"d3900bfd-d710-48ce-96d4-955d1ff5cc66","toolCallId":"call_00_z3emPmeYuNrhZDkaznOccFai","content":"{\"skill_name\": \"packaging-design\", \"description\": \"\\u5916\\u5305\\u88c5\\u8bbe\\u8ba1\\u667a\\u80fd\\u4f53\", \"instructions\": \"# Packaging Design\\n\\u4f60\\u662f\\u4e00\\u4e2a\\u4e13\\u4e1a\\u7684\\u5916\\u5305\\u88c5\\u8bbe\\u8ba1\\u667a\\u80fd\\u52a9\\u624b\\uff0c\\u5f53\\u9700\\u8981\\u5916\\u5305\\u88c5\\u8bbe\\u8ba1\\u65f6\\uff0c\\u9075\\u5faa\\u4ee5\\u4e0b\\u6b65\\u9aa4\\uff1a\\n\\n## \\u7bb1\\u4f53\\u8bbe\\u8ba1\", \"available_scripts\": [], \"available_references\": []}","role":"tool"}
+
+data: {"type":"TEXT_MESSAGE_START","messageId":"fbedd89a-0b6f-4f16-ac74-6f52a79c73d3","role":"assistant"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"fbedd89a-0b6f-4f16-ac74-6f52a79c73d3","delta":"现在"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"fbedd89a-0b6f-4f16-ac74-6f52a79c73d3","delta":"让我"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"fbedd89a-0b6f-4f16-ac74-6f52a79c73d3","delta":"使用"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"fbedd89a-0b6f-4f16-ac74-6f52a79c73d3","delta":"箱"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"fbedd89a-0b6f-4f16-ac74-6f52a79c73d3","delta":"体"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"fbedd89a-0b6f-4f16-ac74-6f52a79c73d3","delta":"设计"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"fbedd89a-0b6f-4f16-ac74-6f52a79c73d3","delta":"工具"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"fbedd89a-0b6f-4f16-ac74-6f52a79c73d3","delta":"来"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"fbedd89a-0b6f-4f16-ac74-6f52a79c73d3","delta":"为"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"fbedd89a-0b6f-4f16-ac74-6f52a79c73d3","delta":"莱"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"fbedd89a-0b6f-4f16-ac74-6f52a79c73d3","delta":"卡"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"fbedd89a-0b6f-4f16-ac74-6f52a79c73d3","delta":"摄像头"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"fbedd89a-0b6f-4f16-ac74-6f52a79c73d3","delta":"设计"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"fbedd89a-0b6f-4f16-ac74-6f52a79c73d3","delta":"外"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"fbedd89a-0b6f-4f16-ac74-6f52a79c73d3","delta":"包装"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"fbedd89a-0b6f-4f16-ac74-6f52a79c73d3","delta":"："}
+
+data: {"type":"TEXT_MESSAGE_END","messageId":"fbedd89a-0b6f-4f16-ac74-6f52a79c73d3"}
+
+data: {"type":"TEXT_MESSAGE_START","messageId":"0685ab82-a868-4480-b79d-09eafd0fac6f","role":"assistant"}
+
+data: {"type":"TEXT_MESSAGE_CONTENT","messageId":"0685ab82-a868-4480-b79d-09eafd0fac6f","delta":"我来帮您设计莱卡摄像头的外包装。首先让我了解一下包装设计的相关技能，然后使用箱体设计工具。现在让我使用箱体设计工具来为莱卡摄像头设计外包装："}
+
+data: {"type":"TEXT_MESSAGE_END","messageId":"0685ab82-a868-4480-b79d-09eafd0fac6f"}
+
+data: {"type":"TOOL_CALL_START","toolCallId":"call_00_e5WjUHgWgYnaqZS88FerbW1h","toolCallName":"tool_box_design","parentMessageId":"0685ab82-a868-4480-b79d-09eafd0fac6f"}
+
+data: {"type":"TOOL_CALL_ARGS","toolCallId":"call_00_e5WjUHgWgYnaqZS88FerbW1h","delta":"[{\"name\": \"length\", \"field_type\": \"str\", \"description\": \"\\u5305\\u88c5\\u7bb1\\u957f\\u5ea6\", \"value\": null}]"}
+
+data: {"type":"TOOL_CALL_END","toolCallId":"call_00_e5WjUHgWgYnaqZS88FerbW1h"}
+
+data: {"type":"RUN_FINISHED","threadId":"tid_123","runId":"220672fa-0a67-42f2-97fb-e63145d1fe7b"}
+

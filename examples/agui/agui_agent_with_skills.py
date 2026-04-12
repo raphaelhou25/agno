@@ -4,6 +4,7 @@ from typing import Any
 from pydantic import BaseModel
 
 from agno.agent import Agent
+from agno.db.sqlite import SqliteDb
 from agno.models.deepseek import DeepSeek
 from agno.os import AgentOS
 from agno.os.interfaces.agui import AGUI
@@ -52,6 +53,10 @@ agent_design = Agent(
     - 箱体设计：用于设计箱体尺寸
     """,
     tools=[tool_box_design],
+    db=SqliteDb(
+        session_table="packaging_design_session",
+        db_file="tmp/agui_agent.db",
+    ),
     skills=Skills(loaders=[LocalSkills(path=str(skills_dir))]),
     input_schema=ProcessMainEntity,
     debug_mode=True,

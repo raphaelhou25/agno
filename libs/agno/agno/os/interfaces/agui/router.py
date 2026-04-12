@@ -3,6 +3,7 @@
 import uuid
 from typing import AsyncIterator, Optional, Union
 
+from agno.run.requirement import RunRequirement
 from agno.utils.log import log_error
 
 try:
@@ -49,16 +50,40 @@ async def run_agent(agent: Union[Agent, RemoteAgent], run_input: RunAgentInput) 
         # Validating the session state is of the expected type (dict)
         session_state = validate_agui_state(run_input.state, run_input.thread_id)
 
-        # Request streaming response from agent
-        response_stream = agent.arun(  # type: ignore
-            input=user_input,
-            session_id=run_input.thread_id,
-            stream=True,
-            stream_events=True,
-            user_id=user_id,
-            session_state=session_state,
-            run_id=run_id,
-        )
+
+        # 检测是否为 HITL continue 请求
+        requirements_data = None
+        if run_input.forwarded_props and isinstance(run_input.forwarded_props, dict):
+            requirements_data = run_input.forwarded_props.get("requirements")
+
+        if requirements_data:
+            # 反序列化 requirements
+            requirements = [
+                RunRequirement.from_dict(r) if isinstance(r, dict) else r
+                for r in requirements_data
+            ]
+            # 调用 acontinue_run，run_id 来自 run_input.run_id（前端必须传入暂停时的 run_id）
+            response_stream = agent.acontinue_run(  # type: ignore
+                # input=user_input, # 考虑HITL执行完成后，用户一并输入了其他内容，是否有这种业务场景
+                run_id=run_id,
+                session_id=run_input.thread_id,
+                requirements=requirements,
+                stream=True,
+                stream_events=True,
+                # session_state=session_state, # 思考：session_state有什么用，在continue 逻辑中是否需要
+                user_id=user_id,
+            )
+        else:
+            # Request streaming response from agent
+            response_stream = agent.arun(  # type: ignore
+                input=user_input,
+                session_id=run_input.thread_id,
+                stream=True,
+                stream_events=True,
+                user_id=user_id,
+                session_state=session_state,
+                run_id=run_id,
+            )
 
         # Stream the response content in AG-UI format
         async for event in async_stream_agno_response_as_agui_events(

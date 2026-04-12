@@ -540,6 +540,71 @@ def _create_completion_events(
                     tool_call_id=tool.tool_call_id,
                 )
                 events_to_emit.append(end_event)
+        user_input_tools  = chunk.tools_requiring_user_input
+        if user_input_tools:
+            # First, emit an assistant message for external tool calls
+            assistant_message_id = str(uuid.uuid4())
+            assistant_start_event = TextMessageStartEvent(
+                type=EventType.TEXT_MESSAGE_START,
+                message_id=assistant_message_id,
+                role="assistant",
+            )
+            events_to_emit.append(assistant_start_event)
+            # Add any text content if present for the assistant message
+            if chunk.content:
+                content_event = TextMessageContentEvent(
+                    type=EventType.TEXT_MESSAGE_CONTENT,
+                    message_id=assistant_message_id,
+                    delta=str(chunk.content),
+                )
+                events_to_emit.append(content_event)
+
+            # End the assistant message
+            assistant_end_event = TextMessageEndEvent(
+                type=EventType.TEXT_MESSAGE_END,
+                message_id=assistant_message_id,
+            )
+            events_to_emit.append(assistant_end_event)
+            # Emit tool call events for external execution
+            for tool in user_input_tools:
+                if tool.tool_call_id is None or tool.tool_name is None:
+                    continue
+
+                start_event = ToolCallStartEvent(
+                    type=EventType.TOOL_CALL_START,
+                    tool_call_id=tool.tool_call_id,
+                    tool_call_name=tool.tool_name,
+                    parent_message_id=assistant_message_id,  # Use the assistant message as parent
+                )
+                events_to_emit.append(start_event)
+
+                schema = []
+                for field in tool.user_input_schema:
+                    if hasattr(field, "to_dict"):
+                        schema.append(field.to_dict())
+                    elif isinstance(field, dict):
+                        schema.append(field)
+
+                args_event = ToolCallArgsEvent(
+                    type=EventType.TOOL_CALL_ARGS,
+                    tool_call_id=tool.tool_call_id,
+                    delta=json.dumps({
+                        # "shema": schema, # requirements中应该有 user_input_schema
+                        "requirements":[
+                            r.to_dict() if hasattr(r, "to_dict") else r
+                            for r in chunk.requirements
+                        ]
+                    }),
+                )
+                events_to_emit.append(args_event)
+
+                end_event = ToolCallEndEvent(
+                    type=EventType.TOOL_CALL_END,
+                    tool_call_id=tool.tool_call_id,
+                )
+                events_to_emit.append(end_event)
+
+
 
     run_finished_event = RunFinishedEvent(type=EventType.RUN_FINISHED, thread_id=thread_id, run_id=run_id)
     events_to_emit.append(run_finished_event)

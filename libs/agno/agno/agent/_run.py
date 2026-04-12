@@ -4008,8 +4008,8 @@ async def _acontinue_run_stream(
                     input = run_response.messages or []
 
                     # If we have updated_tools, set them in the run_response
-                    if updated_tools is not None:
-                        run_response.tools = updated_tools
+                    if updated_tools is not None: # 自扩展实现agui continue，一定保证updated_tools是 None，否则会将历史记录中的tools覆盖
+                        run_response.tools = updated_tools # updated_tools 当前版本是用来接收前端HITL处理结果的
 
                     # If we have requirements, get the updated tools and set them in the run_response
                     elif requirements is not None:
