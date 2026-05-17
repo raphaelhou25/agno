@@ -7,6 +7,7 @@ Agentic Session State.
 
 from agno.agent import Agent
 from agno.db.sqlite import SqliteDb
+from agno.models.deepseek import DeepSeek
 from agno.models.openai import OpenAIResponses
 
 db = SqliteDb(db_file="tmp/agents.db")
@@ -14,7 +15,12 @@ db = SqliteDb(db_file="tmp/agents.db")
 # Create Agent
 # ---------------------------------------------------------------------------
 agent = Agent(
-    model=OpenAIResponses(id="gpt-5-mini"),
+    model=DeepSeek(
+        id="deepseek-chat",
+        name="deepseek-chat",
+        api_key="sk-7b4ab126e7d6479db21b74a4addc9a39",
+        base_url="https://api.deepseek.com"
+    ),
     db=db,
     session_state={"shopping_list": []},
     add_session_state_to_context=True,  # Required so the agent is aware of the session state

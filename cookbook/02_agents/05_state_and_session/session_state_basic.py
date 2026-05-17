@@ -7,6 +7,7 @@ Session State Basic.
 
 from agno.agent import Agent, RunOutput  # noqa
 from agno.db.sqlite import SqliteDb
+from agno.models.deepseek import DeepSeek
 from agno.models.openai import OpenAIResponses
 from agno.run import RunContext
 
@@ -25,7 +26,12 @@ def add_item(run_context: RunContext, item: str) -> str:
 # Create Agent
 # ---------------------------------------------------------------------------
 agent = Agent(
-    model=OpenAIResponses(id="gpt-5-mini"),
+    model=DeepSeek(
+        id="deepseek-chat",
+        name="deepseek-chat",
+        api_key="sk-7b4ab126e7d6479db21b74a4addc9a39",
+        base_url="https://api.deepseek.com"
+    ),
     # Initialize the session state with a counter starting at 0 (this is the default session state for all users)
     session_state={"shopping_list": []},
     db=SqliteDb(db_file="tmp/agents.db"),
