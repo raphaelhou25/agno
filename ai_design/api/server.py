@@ -50,7 +50,7 @@ def plan_trip(destination: str = "", budget: str = "") -> str:
 skills_dir = Path(__file__).parent.parent / "skills"
 
 packaging_design_agent = Agent(
-    name="PackagingDesignAgent",
+    name="PackagingDesign",
     model=OpenAIResponses(id="gpt-5-mini"),
     tools=[],
     skills=Skills(loaders=[LocalSkills(str(skills_dir/"packaging-design"))]),
@@ -64,7 +64,7 @@ packaging_design_agent = Agent(
 )
 
 box_design_agent = Agent(
-    name="BoxDesignAgent",
+    name="BoxDesign",
     model=OpenAIResponses(id="gpt-5-mini"),
     tools=[],
     skills=Skills(loaders=[LocalSkills(str(skills_dir/"box-design"))]),
@@ -78,7 +78,7 @@ box_design_agent = Agent(
 
 
 material_design_agent = Agent(
-    name="MaterialDesignAgent",
+    name="MaterialDesign",
     model=OpenAIResponses(id="gpt-5-mini"),
     tools=[],
     skills=Skills(loaders=[LocalSkills(str(skills_dir/"box-design"))]),
@@ -91,7 +91,7 @@ material_design_agent = Agent(
 
 
 solution_analysis_agent = Agent(
-    name="SolutionAnalysisAgent",
+    name="SolutionAnalysis",
     model=OpenAIResponses(id="gpt-5-mini"),
     tools=[],
     skills=Skills(loaders=[LocalSkills(str(skills_dir/"solution-analysis"))]),
@@ -105,7 +105,7 @@ solution_analysis_agent = Agent(
 )
 
 cost_analysis_agent = Agent(
-    name="CostAnalysisAgent",
+    name="CostAnalysis",
     model=OpenAIResponses(id="gpt-5-mini"),
     tools=[],
     skills=Skills(loaders=[LocalSkills(str(skills_dir/"cost-analysis"))]),
@@ -119,7 +119,7 @@ cost_analysis_agent = Agent(
 )
 
 similarity_analysis_agent = Agent(
-    name="SimilarityAnalysisAgent",
+    name="SimilarityAnalysis",
     model=OpenAIResponses(id="gpt-5-mini"),
     tools=[],
     skills=Skills(loaders=[LocalSkills(str(skills_dir/"similarity-analysis"))]),
@@ -131,7 +131,7 @@ similarity_analysis_agent = Agent(
 )
 
 stacking_analysis_agent = Agent(
-    name="StackingAnalysisAgent",
+    name="StackingAnalysis",
     model=OpenAIResponses(id="gpt-5-mini"),
     tools=[],
     skills=Skills(loaders=[LocalSkills(str(skills_dir/"stacking-analysis"))]),
@@ -143,7 +143,7 @@ stacking_analysis_agent = Agent(
 )
 
 solution_consolidation_agent = Agent(
-    name="SolutionConsolidationAgent",
+    name="SolutionConsolidation",
     model=OpenAIResponses(id="gpt-5-mini"),
     tools=[],
     skills=Skills(loaders=[LocalSkills(str(skills_dir/"solution-consolidation"))]),
@@ -190,4 +190,4 @@ if __name__ == "__main__":
 
     Use Port 9001 for Dojo compatibility.
     """
-    agent_os.serve(app="research_team:app", port=9001)
+    agent_os.serve(app="server:app", host="127.0.0.1", port=9001)
