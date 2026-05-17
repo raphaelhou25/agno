@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ai_design"
+version = "0.1.0"
+description = "A simple package for AI design"
+dependencies = [
+    # "requests>=2.30.0",
+]
+
+# 👇 新增：明确告诉 setuptools 只打包 ai_design 这个目录
+[tool.setuptools]
+packages = ["ai_design"]
