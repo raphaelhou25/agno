@@ -13,6 +13,7 @@ from pathlib import Path
 
 from agno.agent import Agent
 from agno.db.sqlite import SqliteDb
+from agno.models.deepseek import DeepSeek
 from agno.models.openai import OpenAIResponses
 from agno.os import AgentOS
 from agno.os.interfaces.agui import AGUI
@@ -51,7 +52,12 @@ skills_dir = Path(__file__).parent.parent / "skills"
 
 packaging_design_agent = Agent(
     name="PackagingDesign",
-    model=OpenAIResponses(id="gpt-5-mini"),
+    model=DeepSeek(
+        id="deepseek-chat",
+        name="deepseek-chat",
+        api_key="sk-7b4ab126e7d6479db21b74a4addc9a39",
+        base_url="https://api.deepseek.com"
+    ),
     tools=[],
     skills=Skills(loaders=[LocalSkills(str(skills_dir/"packaging-design"))]),
     instructions=(
@@ -61,11 +67,17 @@ packaging_design_agent = Agent(
     ),
     db=db,
     telemetry=False,
+    debug_mode=True,
 )
 
 box_design_agent = Agent(
     name="BoxDesign",
-    model=OpenAIResponses(id="gpt-5-mini"),
+    model=DeepSeek(
+        id="deepseek-chat",
+        name="deepseek-chat",
+        api_key="sk-7b4ab126e7d6479db21b74a4addc9a39",
+        base_url="https://api.deepseek.com"
+    ),
     tools=[],
     skills=Skills(loaders=[LocalSkills(str(skills_dir/"box-design"))]),
     instructions=(
@@ -74,12 +86,18 @@ box_design_agent = Agent(
     ),
     db=db,
     telemetry=False,
+    debug_mode=True,
 )
 
 
 material_design_agent = Agent(
     name="MaterialDesign",
-    model=OpenAIResponses(id="gpt-5-mini"),
+    model=DeepSeek(
+        id="deepseek-chat",
+        name="deepseek-chat",
+        api_key="sk-7b4ab126e7d6479db21b74a4addc9a39",
+        base_url="https://api.deepseek.com"
+    ),
     tools=[],
     skills=Skills(loaders=[LocalSkills(str(skills_dir/"box-design"))]),
     instructions=(
@@ -87,12 +105,18 @@ material_design_agent = Agent(
     ),
     db=db,
     telemetry=False,
+    debug_mode=True,
 )
 
 
 solution_analysis_agent = Agent(
     name="SolutionAnalysis",
-    model=OpenAIResponses(id="gpt-5-mini"),
+    model=DeepSeek(
+        id="deepseek-chat",
+        name="deepseek-chat",
+        api_key="sk-7b4ab126e7d6479db21b74a4addc9a39",
+        base_url="https://api.deepseek.com"
+    ),
     tools=[],
     skills=Skills(loaders=[LocalSkills(str(skills_dir/"solution-analysis"))]),
     instructions=(
@@ -102,11 +126,17 @@ solution_analysis_agent = Agent(
     ),
     db=db,
     telemetry=False,
+    debug_mode=True,
 )
 
 cost_analysis_agent = Agent(
     name="CostAnalysis",
-    model=OpenAIResponses(id="gpt-5-mini"),
+    model=DeepSeek(
+        id="deepseek-chat",
+        name="deepseek-chat",
+        api_key="sk-7b4ab126e7d6479db21b74a4addc9a39",
+        base_url="https://api.deepseek.com"
+    ),
     tools=[],
     skills=Skills(loaders=[LocalSkills(str(skills_dir/"cost-analysis"))]),
     instructions=(
@@ -116,11 +146,17 @@ cost_analysis_agent = Agent(
     ),
     db=db,
     telemetry=False,
+    debug_mode=True,
 )
 
 similarity_analysis_agent = Agent(
     name="SimilarityAnalysis",
-    model=OpenAIResponses(id="gpt-5-mini"),
+    model=DeepSeek(
+        id="deepseek-chat",
+        name="deepseek-chat",
+        api_key="sk-7b4ab126e7d6479db21b74a4addc9a39",
+        base_url="https://api.deepseek.com"
+    ),
     tools=[],
     skills=Skills(loaders=[LocalSkills(str(skills_dir/"similarity-analysis"))]),
     instructions=(
@@ -128,11 +164,17 @@ similarity_analysis_agent = Agent(
     ),
     db=db,
     telemetry=False,
+    debug_mode=True,
 )
 
 stacking_analysis_agent = Agent(
     name="StackingAnalysis",
-    model=OpenAIResponses(id="gpt-5-mini"),
+    model=DeepSeek(
+        id="deepseek-chat",
+        name="deepseek-chat",
+        api_key="sk-7b4ab126e7d6479db21b74a4addc9a39",
+        base_url="https://api.deepseek.com"
+    ),
     tools=[],
     skills=Skills(loaders=[LocalSkills(str(skills_dir/"stacking-analysis"))]),
     instructions=(
@@ -140,11 +182,17 @@ stacking_analysis_agent = Agent(
     ),
     db=db,
     telemetry=False,
+    debug_mode=True,
 )
 
 solution_consolidation_agent = Agent(
     name="SolutionConsolidation",
-    model=OpenAIResponses(id="gpt-5-mini"),
+    model=DeepSeek(
+        id="deepseek-chat",
+        name="deepseek-chat",
+        api_key="sk-7b4ab126e7d6479db21b74a4addc9a39",
+        base_url="https://api.deepseek.com"
+    ),
     tools=[],
     skills=Skills(loaders=[LocalSkills(str(skills_dir/"solution-consolidation"))]),
     instructions=(
@@ -152,6 +200,7 @@ solution_consolidation_agent = Agent(
     ),
     db=db,
     telemetry=False,
+    debug_mode=True,
 )
 # ---------------------------------------------------------------------------
 # Create team
@@ -160,12 +209,18 @@ solution_consolidation_agent = Agent(
 packaging_design_team = Team(
     id="packaging-design-team",
     name="PackagingDesignTeam",
-    model=OpenAIResponses(id="gpt-5-mini"),
+    model=DeepSeek(
+        id="deepseek-chat",
+        name="deepseek-chat",
+        api_key="sk-7b4ab126e7d6479db21b74a4addc9a39",
+        base_url="https://api.deepseek.com"
+    ),
     members=[packaging_design_agent, box_design_agent, material_design_agent, solution_analysis_agent, cost_analysis_agent, similarity_analysis_agent, stacking_analysis_agent, solution_consolidation_agent],
     instructions="外包装设计智能 Agent，根据外包装设计申请单，自动完成从箱体设计、材料设计、方案分析到最终报告生成的全流程设计。",
     db=db,
     telemetry=False,
     add_history_to_context=True,
+    debug_mode=True,
 )
 
 # ---------------------------------------------------------------------------
