@@ -9,6 +9,7 @@ collects the values and sends them back via continue_run.
 Run:
     .venvs/demo/bin/python cookbook/05_agent_os/hitl/user_input_required.py
 """
+import os
 from pathlib import Path
 
 from agno.agent import Agent
@@ -20,6 +21,9 @@ from agno.os.interfaces.agui import AGUI
 from agno.team import Team
 from agno.tools import tool
 from agno.skills import LocalSkills, Skills
+from dotenv import load_dotenv
+load_dotenv()
+API_KEY=os.getenv("API_KEY","")
 
 # ---------------------------------------------------------------------------
 # Storage
@@ -55,7 +59,7 @@ packaging_design_agent = Agent(
     model=DeepSeek(
         id="deepseek-chat",
         name="deepseek-chat",
-        api_key="sk-7b4ab126e7d6479db21b74a4addc9a39",
+        api_key=API_KEY,
         base_url="https://api.deepseek.com"
     ),
     tools=[],
@@ -75,7 +79,7 @@ box_design_agent = Agent(
     model=DeepSeek(
         id="deepseek-chat",
         name="deepseek-chat",
-        api_key="sk-7b4ab126e7d6479db21b74a4addc9a39",
+        api_key=API_KEY,
         base_url="https://api.deepseek.com"
     ),
     tools=[],
@@ -95,7 +99,7 @@ material_design_agent = Agent(
     model=DeepSeek(
         id="deepseek-chat",
         name="deepseek-chat",
-        api_key="sk-7b4ab126e7d6479db21b74a4addc9a39",
+        api_key=API_KEY,
         base_url="https://api.deepseek.com"
     ),
     tools=[],
@@ -114,7 +118,7 @@ solution_analysis_agent = Agent(
     model=DeepSeek(
         id="deepseek-chat",
         name="deepseek-chat",
-        api_key="sk-7b4ab126e7d6479db21b74a4addc9a39",
+        api_key=API_KEY,
         base_url="https://api.deepseek.com"
     ),
     tools=[],
@@ -134,7 +138,7 @@ cost_analysis_agent = Agent(
     model=DeepSeek(
         id="deepseek-chat",
         name="deepseek-chat",
-        api_key="sk-7b4ab126e7d6479db21b74a4addc9a39",
+        api_key=API_KEY,
         base_url="https://api.deepseek.com"
     ),
     tools=[],
@@ -154,7 +158,7 @@ similarity_analysis_agent = Agent(
     model=DeepSeek(
         id="deepseek-chat",
         name="deepseek-chat",
-        api_key="sk-7b4ab126e7d6479db21b74a4addc9a39",
+        api_key=API_KEY,
         base_url="https://api.deepseek.com"
     ),
     tools=[],
@@ -172,7 +176,7 @@ stacking_analysis_agent = Agent(
     model=DeepSeek(
         id="deepseek-chat",
         name="deepseek-chat",
-        api_key="sk-7b4ab126e7d6479db21b74a4addc9a39",
+        api_key=API_KEY,
         base_url="https://api.deepseek.com"
     ),
     tools=[],
@@ -190,7 +194,7 @@ solution_consolidation_agent = Agent(
     model=DeepSeek(
         id="deepseek-chat",
         name="deepseek-chat",
-        api_key="sk-7b4ab126e7d6479db21b74a4addc9a39",
+        api_key=API_KEY,
         base_url="https://api.deepseek.com"
     ),
     tools=[],
@@ -212,7 +216,7 @@ packaging_design_team = Team(
     model=DeepSeek(
         id="deepseek-chat",
         name="deepseek-chat",
-        api_key="sk-7b4ab126e7d6479db21b74a4addc9a39",
+        api_key=API_KEY,
         base_url="https://api.deepseek.com"
     ),
     members=[packaging_design_agent, box_design_agent, material_design_agent, solution_analysis_agent, cost_analysis_agent, similarity_analysis_agent, stacking_analysis_agent, solution_consolidation_agent],
@@ -245,4 +249,4 @@ if __name__ == "__main__":
 
     Use Port 9001 for Dojo compatibility.
     """
-    agent_os.serve(app="server:app", host="127.0.0.1", port=9001)
+    agent_os.serve(app="server:app", host="0.0.0.0", port=9001)
